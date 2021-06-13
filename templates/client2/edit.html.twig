@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Client{% endblock %}
+
+{% block body %}
+    <h1>Modifier Client</h1>
+{{ form_start(form) }}
+ {{ form_row(form.nom, {'label': 'nom :','attr': {'placeholder': 'nom','class': 'form-control'}}) }}
+ {{ form_row(form.prenom, {'label': 'prenom :','attr': {'placeholder': 'prenom','class': 'form-control'}}) }}
+ {{ form_row(form.email, {'label': 'email :','attr': {'placeholder': 'email','class': 'form-control'}}) }}
+ {{ form_row(form.password, {'label': 'password','attr': {'placeholder': 'password','class': 'form-control'}}) }}
+ {{ form_row(form.confirm_password, {'label': 'confirm_password :','attr': {'placeholder': 'confirm_password','class': 'form-control'}}) }}
+ {{ form_row(form.adresse, {'label': 'adresse :','attr': {'placeholder': 'adresse','class': 'form-control'}}) }}
+<br>
+
+    <a href="{{ path('security_login') }}"class="btn btn-info">Retour</a>
+     <button class="btn btn-success" type="submit">Modifier</button>
+
+     {{ form_end(form) }}
+{% endblock %}

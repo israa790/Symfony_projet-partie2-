@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Produit{% endblock %}
+
+{% block body %}
+    <h1>Modifier Produit</h1>
+
+    
+   {{ form_start(form) }}
+   {{ form_row(form.nomProd, {'label': 'Nom Produit','attr': {'placeholder': 'Nom Produit','class': 'form-control'}}) }}
+ {{ form_row(form.prix, {'label': 'Prix Produit','attr': {'placeholder': 'Prix','class': 'form-control'}}) }}
+ {{ form_row(form.quantite, {'label': 'quantite','attr': {'placeholder': 'quantite','class': 'form-control'}}) }}
+ {{ form_row(form.image, {'label': 'image','attr': {'placeholder': 'image','class': 'form-control'}}) }}
+  {{ form_row(form.Category, {'label': 'Category','attr': {'placeholder': '','class': 'form-control'}}) }}
+            
+<br>
+ <a href="{{ path('produit_index') }}" class="btn btn-primary">Retour</a>
+ <button type="submit" class="btn btn-success">Modifier</button>
+   
+{{ form_end(form) }}
+{% endblock %}

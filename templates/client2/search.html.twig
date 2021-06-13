@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client2 index{% endblock %}
+
+{% block body %}
+
+
+{{ form_start(form) }}
+
+<div class="form-row align-items-end">
+<div class="col">
+{{ form_row(form.nom) }}
+</div>
+<div class="col">
+<div class="form-group">
+<button type="submit" class="btn btn-success">Rechercher</button>
+</div>
+</div>
+</div>
+
+{{ form_end(form) }}
+    <h1>Liste des Clients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Adresse</th>
+                <th colspan="3">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client2 in client2s %}
+            <tr>
+                <td>{{ client2.id }}</td>
+                <td>{{ client2.nom }}</td>
+                <td>{{ client2.prenom }}</td>
+                <td>{{ client2.email }}</td>
+                <td>{{ client2.password }}</td>
+                <td>{{ client2.adresse }}</td>
+                <td>
+                     <a href="{{ path('client2_show', {'id': client2.id}) }}" class="btn btn-info">Détails</a></td>
+                     <td><a href="{{ path('client2_edit', {'id': client2.id}) }}" class="btn btn-warning">Modifier</a></td>
+                  <td>   <a href="{{ path('client2_delete', {'id': client2.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('client2_new') }}" class="btn btn-success">Ajouter Client</a>
+{% endblock %}

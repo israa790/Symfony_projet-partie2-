@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+
+
+    <h1>Liste des Produits</h1>
+	
+    <br>
+     <a  href="{{ path('produit_new') }}" class="btn btn-outline-success">Ajouter Produit</a>
+<br><br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Id</th>
+                <th>NomProd</th>
+                <th>Prix</th>
+                <th>Quantite</th>
+                <th>Categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><img src="{{ produit.image }}" width="200" height="200"/></td>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nomProd }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td>{{ produit.category.titre }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-warning">Modifier</a>
+                     <a href="{{ path('produit_delete', {'id': produit.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<hr>
+{% endblock %}

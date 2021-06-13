@@ -1,0 +1,51 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block title %}Produit {% endblock %}
+
+{% block body %}
+    <h1>Nos Produits</h1>
+   <!--  {% for produit in produits %}
+
+<div id="wrapper" class="container">
+ <section  class="homepage-slider" >
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<img src="{{ produit.image }}" width="200" height="200"/>
+							<div class="intro">
+								!--<h1>Mid season sale</h1>
+								<p><span>Up to 50% Off</span></p>
+								<p><span>On selected items online and in stores</span></p>--
+							</div>
+						</li>
+					</ul>
+				</div>			
+			</section>
+            </div>
+            {% endfor %}-->
+<br>
+<a href="{{ path('produit_par_prixCLT') }}" class="btn btn-outline-primary">Recherche Par Prix</a> 
+<a href="{{ path('recherche_listCLT') }}" class="btn btn-outline-success">Recherche Par Nom</a> 
+<a href="{{ path('produit_par_catCLT') }}" class="btn btn-outline-warning">Recherche Par Catégorie</a> 
+<br><br>
+              {% for produit in produits %}
+    <table class="table">
+     
+            <tr>
+                 <td>
+                 <img src="{{ produit.image }}" width="200" height="200"/></td></tr>
+              <tr>  <td><a href="{{ path('produit_showClt',{'id':produit.id}) }}">{{ produit.nomProd }} :
+               <br>{{ produit.prix }} DT</a></td>
+               
+    
+            </tr>
+          
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+            
+        {% endfor %}
+       
+    </table>
+{% endblock %}

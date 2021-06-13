@@ -1,0 +1,52 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block title %}Hello CartController!
+{% endblock %}
+
+{% block body %}
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+{% if items |length >0  %}
+<table class="table">
+<thead>
+     <tr>
+       <th>Image</th>
+        <th>Produit</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+{% for item in items %}
+<tr>
+   <td><img src="{{ item.product.image}}" height="200" width="200"/></td>
+   <td>{{ item.product.nomProd }}</td>
+   <td>{{ item.product.prix }}</td>
+   <td>{{ item.quantity }}</td>
+   <td>{{ item.product.prix *item.quantity }}</td>
+   <td>
+    <a href="#" class="btn btn-success">Commande</a>
+    </td>
+   <td>
+    <a href="{{ path('cart_remove',{'id' :item.product.id}) }}" class="btn btn-danger"
+    onClick="alert('voulez vous supprimer ce produit ?')">
+<i class="fas fa-trash">Supprimer</i>
+    </a>
+   </td></tr>
+   {% endfor %}
+</tbody>
+<tfoot>
+<tr>
+<td colspan="4" class="text-right">Total:</td>
+<td>{{ total }}</td>
+</tr>
+</tfoot>
+</table>
+{% else %}
+    <p>Surprise, c'est vide !</p>
+
+    {% endif %}
+{% endblock %}

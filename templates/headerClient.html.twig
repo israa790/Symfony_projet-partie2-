@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Client_Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse show" id="navbarColor02" style="">
+    <ul class="navbar-nav mr-auto">
+     <!-- <li class="nav-item active">
+        <a class="nav-link" href="{{ path('index_clt') }}">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>-->
+     
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ path('produit_vue') }}">Produits</a>
+           <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('cart_index') }}">Panier</a>
+      </li>
+      
+   </ul>
+   
+  </div>
+   <div  class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('security_login') }}"  role="button" aria-haspopup="true" aria-expanded="false">Compte</a>
+          <div class="dropdown-menu">
+               <a class="nav-link" href="{{ path('clt_new') }}">Inscrire</a>
+             <a class="nav-link" href="{{ path('security_login') }}">Identifier</a>
+            <div class="dropdown-divider"></div>
+           <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
+          </div>
+        </div>
+   
+  
+</nav>

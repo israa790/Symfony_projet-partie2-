@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search index{% endblock %}
+
+{% block body %}
+
+
+<br><br>
+    <h4 class="text-success">Choisissez le type de recherche :</h4><br>
+<a href="{{ path('produit_par_prix') }}" class="btn btn-outline-primary">Recherche Par Prix</a> 
+<a href="{{ path('recherche_list') }}" class="btn btn-outline-warning">Recherche Par Nom</a> 
+<a href="{{ path('produit_par_cat') }}" class="btn btn-outline-danger">Rechercher Par Catégorie</a>
+
+{% endblock %}

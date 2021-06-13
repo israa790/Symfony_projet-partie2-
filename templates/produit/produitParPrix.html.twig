@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des articles par prix{% endblock%}
+
+{% block body %}
+{{ form_start(form) }}
+<div class="form-row align-items-end">
+<div class="col"><br>
+ <a href="{{ path('SearchIndex') }}" class="btn btn-outline-primary">Retour</a> 
+ <br><br>
+<a href="{{ path('recherche_list') }}" class="btn btn-outline-warning">Recherche Par Nom</a> 
+<a href="{{ path('produit_par_cat') }}" class="btn btn-outline-danger">Rechercher Par Catégorie</a>
+
+ <br><br>
+{{form_row(form.minPrice, {'label': 'min Prix','attr': {'placeholder': 'Min Prix','class': 'form-control'}}) }}
+</div>
+<div></div>
+<div class="col">
+{{ form_row(form.maxPrice, {'label': 'max Prix','attr': {'placeholder': 'Max Prix','class': 'form-control'}}) }}
+</div>
+<div class="col">
+<div class"form-group">
+<button type="submit" class="btn btn-outline-success">Rechercher Prix</button>
+</div>
+</div></div>
+{{ form_end(form) }}
+{% if produits %}
+<table id="produits" class="table table-striped">
+<thead>
+<tr><th> Nom</th>
+<th>Prix</th>
+<th>Categorie</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for produit in produits %}
+<tr><td>{{produit.nomProd}}</td>
+<td>{{produit.prix}}</td>
+<td>{{produit.category.titre}}</td>
+<td><a href="/produit/{{produit.id}}" class="btn btn-dark">Détails</a>
+<a href="/produit/edit/{{produit.id}}" class="btn btn-dark">Modifier</a>
+<a href="/produit/delete/{{produit.id}}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de supprimer cet article?');">Supprimer</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+<table>
+{% else %}
+<p> Aucun articles </p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client2{% endblock %}
+
+{% block body %}
+    <h1>Afficher Client</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client2.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client2.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ client2.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ client2.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ client2.password }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ client2.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('client2_index') }}" class="btn btn-info">Retour </a>
+
+    <a href="{{ path('client2_edit', {'id': client2.id}) }}" class="btn btn-warning">Modifier</a>
+
+    {{ include('client2/_delete_form.html.twig') }}
+{% endblock %}
